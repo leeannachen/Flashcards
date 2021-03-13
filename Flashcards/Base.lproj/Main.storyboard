@@ -37,6 +37,12 @@
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="25"/>
                                         <color key="textColor" red="0.72968107461929321" green="0.93602198362350464" blue="0.85937720537185669" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="EP4-CH-2Z9" appends="YES" id="nzM-ze-GRr"/>
                                         </connections>
@@ -44,13 +50,25 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgr-im-JJg">
+                                <rect key="frame" x="173" y="755" width="69" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <color key="tintColor" red="0.075425915420055389" green="0.25215557217597961" blue="0.29404136538505554" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="plus.square" catalog="system"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="EP4-CH-2Z9" appends="YES" id="RGY-Fo-fOP"/>
+                                    <segue destination="hFz-Mr-ark" kind="presentation" id="Aoz-EO-ND3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="answer" destination="X5O-z7-0vl" id="32K-Vw-CnJ"/>
-                        <outlet property="question" destination="X5O-z7-0vl" id="cEB-By-xam"/>
+                        <outlet property="answerLabel" destination="RnN-IO-Fjv" id="pJt-dl-aRB"/>
+                        <outlet property="flashcardView" destination="jZM-OD-PUp" id="sXc-tb-c5c"/>
+                        <outlet property="questionLabel" destination="X5O-z7-0vl" id="cEB-By-xam"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -62,8 +80,72 @@
             </objects>
             <point key="canvasLocation" x="179.71014492753625" y="944.86607142857133"/>
         </scene>
+        <!--Creation View Controller-->
+        <scene sceneID="u0f-Hq-rID">
+            <objects>
+                <viewController id="gYx-EN-HOs" customClass="CreationViewController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="plk-cn-ZMM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Question " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s30-Jl-LvG">
+                                <rect key="frame" x="127" y="285" width="161" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IXi-A2-elN">
+                                <rect key="frame" x="134" y="400" width="147" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hgj-i6-KUe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yhG-0A-c7y">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="cNb-Jn-6Hh">
+                            <connections>
+                                <action selector="didTapOnCancel:" destination="gYx-EN-HOs" id="kp4-dy-2AT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="NjV-yc-o7Y">
+                            <connections>
+                                <action selector="didTapOnDone:" destination="gYx-EN-HOs" id="N97-ah-BC2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="answerTextField" destination="IXi-A2-elN" id="AED-tj-rJo"/>
+                        <outlet property="questionTextField" destination="s30-Jl-LvG" id="PAw-9d-Gki"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9uO-h5-ETm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1868.1159420289857" y="944.86607142857133"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HDc-ui-2wl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hFz-Mr-ark" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kG2-aj-yKF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gYx-EN-HOs" kind="relationship" relationship="rootViewController" id="pBY-Wa-ddk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gr9-5I-D1l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957.97101449275374" y="944.86607142857133"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="plus.square" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
