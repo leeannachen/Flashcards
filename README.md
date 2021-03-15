@@ -7,7 +7,7 @@ New Feature: The user can type a new question and answer on a seperate screen an
 
 ### App Walk-though
 
-<img src="https://github.com/leeannachen/Flashcards/blob/main/lab2.gif" width=600><br>
+<img src="https://github.com/leeannachen/Flashcards/blob/main/Lab2.gif" width=600><br>
 
 ## Required
 - [x] User can open the creation screen
